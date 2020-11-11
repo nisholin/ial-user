@@ -1,0 +1,34 @@
+<div class="modal-header">
+  <div class="container">
+    <div class="text-center b">
+      <h2 class="fs-30 c-green">
+        <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+        Booking Confirmed
+      </h2>
+    </div>
+  </div>
+</div>
+
+<div class="modal-body">
+  <div class="container">
+    <div class="main-box"><br/>
+        <div class="container1" *ngFor="let x of fieldArray">
+           <ul class="row">
+             <img src="./assets/images/img-01.jpg" style="width: 25%;" 
+             alt="Image">
+             <ul class="details">
+              <p class="fs-20 fs-w mr-b-0">{{ x.itemName }}</p>
+              <ul class="row">
+                <li>Quantity</li>
+                &nbsp;
+                <li>:</li>
+                &nbsp;
+                <li>{{ x.qty }}</li>
+              </ul>
+             </ul>
+           </ul>
+           <hr>
+        </div>
+    </div>
+  </div>
+</div>

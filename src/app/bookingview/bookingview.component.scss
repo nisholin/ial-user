@@ -1,0 +1,36 @@
+.main-box {
+    width: 100%;
+    height: auto;
+    background: #ffffff;
+    /*box-shadow: 2px 5px 11px 6px #c7c7c7;*/
+}
+.container1 {
+    width: 95%;
+    margin: 0px 35px;
+    height: auto;
+    /*background: #ffffff;*/
+    padding-bottom: 30px;
+}
+.details {
+    margin: 0px 100px;
+}
+
+::ng-deep .modal-class .modal-dialog {
+    max-width: 80%;
+    width: 50% !important;
+    padding-top: 50px !important;
+    padding-bottom: 50px !important;
+  }
+  .modal-header,.modal-body {
+    background:white;
+    padding: 0.5rem;
+    border: 1px solid white;
+  }
+  .modal-footer {
+    border: 1px solid white;
+  }
+  ::ng-deep .modal-class .modal-content {
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+    background:white;
+  }

@@ -1,0 +1,150 @@
+<!-- Start Menu -->
+<div class="menu-box" style="    background: #ffffff url(./assets/images/about-bg.jpg) no-repeat bottom center;
+background-size: cover;overflow-y: auto;">
+<br/>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="heading-title text-center">
+                <h2>Today's Menu</h2>
+                <p class="c-blue f-w-b">{{this.todaysDataTime}}</p>
+            </div>
+        </div>
+    </div>
+			
+    <div class="row inner-menu-box">
+        <div class="col-3">
+            <div class="user-details-div" *ngIf="userdiv">
+            <br/>
+                <div class="user-img-div">
+                    <img src="./assets/images/user1.jpg" style="width: 100%;"/> 
+                </div>
+                <div class="user-detail-container">
+                    <ul *ngFor="let user of users">
+                        <li> <h3>{{user.emp_name}}</h3></li>
+                        <li>{{user.emp_name}}</li>
+                        <li>{{user.emp_name}}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+            
+        <div class="col-9">
+            <div class="tab-content" id="v-pills-tabContent">
+                <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="row" *ngFor="let foodData of foodList">
+                                <div class="col-6 gallery-single fix " ng-model="all">
+                                    <img src="./assets/images/img-01.jpg" class="lightbox img-fluid h-61" alt="Image"
+                                    (click)="amountDivOpen(foodData.itemname,this.model.qty,this.model.item1)">
+                                </div>
+                                <div class=" col-6 special-grid drinks" ng-disabled="all">
+                                    <div class="gallery-single fix h-63">
+                                        <ul class="q-mr-t-l t-a-c">
+                                            <li class="fs-w">{{foodData.itemname}}</li>
+                                            <div class="button_group">
+                                                <button class="w-30 br-none bg-ccc" id="subtract" 
+                                                (click)="down(this.model.qty,1)">-</button>
+                                                    <button class="w-30 br-none" id="reset">
+                                                      {{ this.model.qty }}
+                                                    </button>
+                                                <button class="w-30 br-none bg-ccc" id="add" 
+                                                (click)="up('10',1)">+</button>
+                                            </div>
+                                        </ul>                                           
+                                    </div> 
+                                </div>
+                            </div>
+                             <div class="row" >
+                                <div class="col-6 gallery-single fix ">
+                                    <img src="./assets/images/img-02.jpg" class="lightbox img-fluid h-61" alt="Image" 
+                                    (click)="amountDivOpen(itemname2,this.model.qty2,this.model.item2)">
+                                </div>
+                                <div class=" col-6 special-grid drinks">
+                                    <div class="gallery-single fix h-63">
+                                        <ul class="q-mr-t-l t-a-c">
+                                            <li class="fs-w">{{itemname2}}</li>
+                                            <div class="button_group">
+                                                <button class="w-30 br-none bg-ccc" id="subtract" 
+                                                (click)="down(this.model.qty2,2)">-</button>
+                                                    <button class="w-30 br-none" id="reset">
+                                                      {{ this.model.qty2 }}
+                                                    </button>
+                                                <button class="w-30 br-none bg-ccc" id="add"
+                                                (click)="up('10',2)">+</button>
+                                            </div>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div> 					
+                             <div class="row" >
+                                <div class="col-6 gallery-single fix ">
+                                    <img src="./assets/images/img-03.jpg" class="lightbox img-fluid h-61" alt="Image" 
+                                    (click)="amountDivOpen(itemname3,this.model.qty3,this.model.item3)">
+                                </div>
+                                <div class=" col-6 special-grid drinks">
+                                    <div class="gallery-single fix h-63">
+                                        <ul class="q-mr-t-l t-a-c">
+                                            <li class="fs-w">{{itemname3}}</li>
+                                            <div class="button_group">
+                                                <button class="w-30 br-none bg-ccc" 
+                                                id="subtract" (click)="down(this.model.qty3,3)">
+                                                -</button>
+                                                    <button class="w-30 br-none" id="reset">
+                                                      {{ this.model.qty3 }}
+                                                    </button>
+                                                <button class="w-30 br-none bg-ccc" id="add" 
+                                                (click)="up('10',3)">+</button>
+                                            </div>
+                                        </ul>
+                                    </div>    
+                                </div>
+                            </div> 
+                        </div>
+                        <div class="col-6">
+                        <div class="amount-div" *ngIf="amountdiv">
+                        <form>
+                         <br/>
+                         <div>
+                        <div class="second-layer">
+                            <table>
+                                <thead>
+                                    <tr>
+                                     <td>No.</td>
+                                     <td>ITems</td>
+                                     <td>Quantity</td>
+                                     <td>Icon</td>
+                                    </tr>
+                                </thead>
+                                <tbody *ngFor="let arr of fieldArray; let i = index">
+                                    <tr>
+                                     <td>{{ i+1 }}</td>
+                                     <td>{{ arr.itemName }}</td>
+                                     <td>{{ arr.qty }}</td>
+                                     <td>
+                                     <i class="fa fa-times" (click)="deleteFieldValue(i,arr.itemvalue)" aria-hidden="true"></i>
+                                     </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="save-cancel-div">
+                            <span>
+                                <button class="save-btn" (click)="amountDetailsSave(fieldArray)">Save</button>
+                                &nbsp;&nbsp;
+                                <button class="cancel-btn" (click)="amountDetailsCancel()">Cancel</button>
+                            </span>
+                        </div>
+                    </div>
+                        </form>
+                        </div>
+                        </div>
+                    </div>	
+                </div>
+            </div>
+        </div>
+    </div>	
+</div>
+</div> 
+	<!-- End Menu -->

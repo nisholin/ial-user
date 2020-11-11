@@ -1,0 +1,48 @@
+<div id="carouselExampleIndicators" id="slides" class="carousel slide" 
+data-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="./assets/images/slider-01.jpg" class="img-size" alt="">
+        <div class="row txt-container">
+            <div class="col-md-12 col-lg-6">
+                <div class="card-detail-box">
+                 <div class="carddiv-container">
+                     <h1 class="m-b-20">
+                        <strong class="fs-45 c-fff">Swip Your Card</strong>
+                     </h1>
+                 </div>
+                </div>
+                <br/>
+                <form>
+                 <input type="text" 
+                     placeholder="&nbsp;&nbsp;Swip Card Number" 
+                     class="card-input-box" 
+                     id="qrcode" [(ngModel)]="this.model.qrcode" 
+                     #qrcode="ngModel" 
+                     name="qrcode" 
+                 required/> 
+                 <p>
+                    <button class="btn btn-lg btn-circle btn-outline-new-white"
+                     (click)="saveQrCode(qrcode.value)">Enter</button>
+                 </p>
+                </form>
+            </div> 
+            <div class="col-lg-6">
+                <div class="right-container">
+                    <div class="today-menu-box">
+                        <span class="t-align">
+                         <li class="fs-30 f-c-white">Today's Menu</li>
+                         <li class="fs-23 c-dark-orange">{{this.todaysDataTime}}</li>
+                        </span>
+                        <ul class="fs-20 t-c-orange t-align br-white box-s-white">
+                            <li>Idly</li>
+                            <li>Dosa</li>
+                            <li>Pongal</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+</div>
+</div>
