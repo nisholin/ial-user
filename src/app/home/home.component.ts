@@ -1,14 +1,15 @@
 import { formatDate } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Input } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { BookingviewComponent } from '../bookingview/bookingview.component';
-
+//services
+import { HomeService } from "../services/home.service";
 import { QrcodeService } from '../services/qrcode.service';
+//_models
 import { User } from '../_models/user';
 import { Fooddetails } from '../_models/fooddetails';
-import { Input } from '@angular/core';
 
 @Component({
   selector: 'app-home',
@@ -22,7 +23,7 @@ export class HomeComponent implements OnInit {
   model: any = {};
   today= new Date();
   todaysDataTime = '';
-  users:User;
+  users:User[];
   user: any;
   fooddetails:Fooddetails;
   //users: User[];
@@ -40,16 +41,29 @@ export class HomeComponent implements OnInit {
     public router : Router,
     config: NgbModalConfig, private modalService: NgbModal,
     private qrcodeService: QrcodeService,
+    private homeService: HomeService,
   ) {
     this.todaysDataTime = formatDate(this.today, 'hh:mm a', 'en-US', '+0530');
     config.backdrop = 'static';
     config.keyboard = false;
 
-    const userdata = require("src/app/userdata.json");
-    this.userList=userdata;     
+    let qrcode = localStorage.getItem("qrcode");
+    alert("user"+qrcode);
+    this.qrcodeService.readQrcode(qrcode).subscribe((users: User[])=>{
+      this.userList = users;
+      console.log("Users-->"+this.userList.length);
+    });
+
+    /* const userdata = require("src/app/userdata.json");
+    this.userList=userdata;    */  
     
     const fooddetils = require("src/app/fooddetils.json");
     this.foodList=fooddetils; 
+    this.todaysDataTime = formatDate(this.today, 'hh:mm a', 'en-US', '+0530');
+    this.homeService.readUser().subscribe((user: User[])=>{
+      this.user = user;
+      console.log(this.user);
+    });
 
   }
    
@@ -149,7 +163,10 @@ export class HomeComponent implements OnInit {
     }
   }
   amountDetailsSave(item: any) {
-    //alert("item name-->"+item.length);
+    let qrcode = localStorage.getItem("qrcode");
+    //console.log(qrcode);
+    this.homeService.saveFoodDetails(qrcode,item).subscribe(()=>{
+    });
     const modalRef = this.modalService.open(BookingviewComponent, { windowClass: 'modal-class'});
     let data: any;
     data = {
@@ -171,13 +188,4 @@ export class HomeComponent implements OnInit {
   amountDetailsCancel() {
     this.amountdiv = false;
   }
-  /* readUserDetails(qrcode){
-    //alert("user details");
-    this.qrcodeService.readUserDetails(qrcode).subscribe((users: User[])=>{
-      this.user = users;
-      console.log("Users-->"+this.user);
-    })
-    console.log("Users-->"+this.user);
-    //alert("details1--->"+this.users);
-  } */
 }

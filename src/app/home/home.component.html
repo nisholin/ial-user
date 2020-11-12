@@ -20,10 +20,9 @@ background-size: cover;overflow-y: auto;">
                     <img src="./assets/images/user1.jpg" style="width: 100%;"/> 
                 </div>
                 <div class="user-detail-container">
-                    <ul *ngFor="let user of users">
+                    <ul *ngFor="let user of userList">
                         <li> <h3>{{user.emp_name}}</h3></li>
-                        <li>{{user.emp_name}}</li>
-                        <li>{{user.emp_name}}</li>
+                        <li>{{user.emp_code}}</li>
                     </ul>
                 </div>
             </div>

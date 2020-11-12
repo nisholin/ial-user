@@ -13,32 +13,19 @@ export class QrcodeService {
 
  // private commonURL = this.globalsURL.serverURL;
  PHP_API_SERVER = "http://192.168.200.49/ial_canteen";
+ baseUrl = 'http://localhost:3000/api';
 
-  constructor(private http: HttpClient, private globalsURL: ServerURL) { }
+  constructor(private httpClient: HttpClient, private globalsURL: ServerURL) { }
 
-  //saveQrCode(model: any){
-   // console.log("QR Code -->"+model.qrcode);
-  ///  return this.http.post<User>(this.commonURL+'saveQrCode',model);
-   // return this.http.post<User>(`${this.PHP_API_SERVER}/create_product.php`, product);
-  //}
-  readUserDetails(qrcode:any): Observable<User[]>{
-    alert("qrcode--->"+qrcode);
-    return this.http.get<User[]>(`${this.PHP_API_SERVER}/canteen/employee_check.php`);
-	}
-	readUser(qrcode: number): Observable<User>{
-		return this.http.post<User>(`${this.PHP_API_SERVER}/qrcode.php`, qrcode);
-  }
-  //save food details
-	updateAmountDetails(item: any){
-    alert("Length-->"+item.length);
-		return this.http.put<Fooddetails>(`${this.PHP_API_SERVER}/update_product.php`, item);
-	}
-	deleteProduct(id: number){
-		return this.http.delete<User>(`${this.PHP_API_SERVER}/delete_product.php/?id=${id}`);
-  }
-  //send qrcode
-  checkproduct(qrcode: number){
-		return this.http.delete<User>(`${this.PHP_API_SERVER}/canteen/employee_check.php/?rfid=${qrcode}`);
-	}
-
+//nodejs
+/* sendQrcode(qrcode) {
+  console.log(qrcode);
+  return this.httpClient.post<any>(this.baseUrl + '/users',qrcode);
+  } */
+  sendQrcode(qrcode): Observable<User[]> {
+    return this.httpClient.post<User[]>(`http://localhost:3000/api/users`,{qrcode});
+}
+readQrcode(qrcode): Observable<User[]> {
+  return this.httpClient.get<User[]>(`${this.baseUrl}` + `/users/`+qrcode)
+}
 }
