@@ -18,7 +18,7 @@ export class HomeService {
   }
   saveFoodDetails(item) {
     //console.log(qrcode);
-   // console.log(item);
+    console.log(item);
     return this.httpClient.post<any>(this.baseUrl +'/users/save',item);
   }
 }
