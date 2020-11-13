@@ -14,11 +14,11 @@ export class HomeService {
   constructor(private httpClient: HttpClient) { 
   }
   readUser(): Observable<User[]> {
-    return this.httpClient.get<User[]>(`${this.baseUrl}` + `/users`)
+    return this.httpClient.get<User[]>(`${this.baseUrl}` + `/users`);
   }
-  saveFoodDetails(qrcode,item) {
-    console.log(qrcode);
-    console.log(item)
-    return this.httpClient.post<any>(this.baseUrl +'/users/',qrcode,item);
+  saveFoodDetails(item) {
+    //console.log(qrcode);
+   // console.log(item);
+    return this.httpClient.post<any>(this.baseUrl +'/users/save',item);
   }
 }

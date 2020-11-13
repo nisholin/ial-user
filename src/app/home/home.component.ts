@@ -92,15 +92,15 @@ export class HomeComponent implements OnInit {
     }else{
     this.amountdiv = true;
     if(itemvalue == 1){
-      this.fieldArray.push( { itemvalue: itemvalue, itemName: itemname, qty: quantity } );
+      this.fieldArray.push( { itemvalue: itemvalue, itemname: itemname, qty: quantity } );
       this.model.item1 = 11;
     }
     if(itemvalue == 2){
-      this.fieldArray.push( { itemvalue: itemvalue, itemName: itemname, qty: quantity } );
+      this.fieldArray.push( { itemvalue: itemvalue, itemname: itemname, qty: quantity } );
       this.model.item2 = 22;
     }
     if(itemvalue == 3){
-      this.fieldArray.push( { itemvalue: itemvalue, itemName: itemname, qty: quantity } );
+      this.fieldArray.push( { itemvalue: itemvalue, itemname: itemname, qty: quantity } );
       this.model.item3 = 33;
     }
     //this.fieldArray.push( { itemName: itemname, qty: quantity } );
@@ -165,7 +165,7 @@ export class HomeComponent implements OnInit {
   amountDetailsSave(item: any) {
     let qrcode = localStorage.getItem("qrcode");
     //console.log(qrcode);
-    this.homeService.saveFoodDetails(qrcode,item).subscribe(()=>{
+    this.homeService.saveFoodDetails(item).subscribe(()=>{
     });
     const modalRef = this.modalService.open(BookingviewComponent, { windowClass: 'modal-class'});
     let data: any;
