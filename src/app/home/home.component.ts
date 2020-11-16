@@ -48,7 +48,7 @@ export class HomeComponent implements OnInit {
     config.keyboard = false;
 
     let qrcode = localStorage.getItem("qrcode");
-    alert("user"+qrcode);
+    //alert("user"+qrcode);
     this.qrcodeService.readQrcode(qrcode).subscribe((users: User[])=>{
       this.userList = users;
       console.log("Users-->"+this.userList.length);

@@ -34,9 +34,10 @@ export class DashboardComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    this.todaysDataTime = formatDate(this.today, 'hh:mm a', 'en-US', '+0530');
   }
   readQrCode(qrcode){
-    alert("QRcode--->"+qrcode);
+    //alert("QRcode--->"+qrcode);
     this.qrcodeService.readQrcode(qrcode).subscribe((users: User[])=>{
       this.userList = users;
       console.log("Users-->"+this.userList.length);

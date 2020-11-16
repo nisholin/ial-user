@@ -1372,6 +1372,9 @@ blockquote {
 .fs-20 {
     font-size: 20px;
 }
+.fs-16 {
+    font-size: 16px;
+}
 .fs-w {
     font-weight: bold;
 }
@@ -1385,11 +1388,16 @@ blockquote {
     background: #00c300;
     border: none;
     width: 40%;
+    cursor: pointer;
 }
 .cancel-btn {
     background: red;
     border: none;
     width: 40%;
+    cursor: pointer;
+}
+i {
+    cursor: pointer;
 }
 .b,strong {
     font-weight: bolder; 
@@ -1406,7 +1414,7 @@ blockquote {
 }
 .title-txt {
     font-size: 30px;
-    color: #d65106;
+    color: #0062cc;
 }
 .lightbox {
     border: 3px solid #d65106;
@@ -1431,6 +1439,12 @@ blockquote {
 .c-b {
     color: black;
 }
+.c-b-f {
+    color: #495057;
+}
+.c-r {
+    color: red;
+}
 .row {
     margin: 0px;
 }
@@ -1448,6 +1462,10 @@ blockquote {
 }
 .mr-b-0 {
     margin-bottom: 0px;
+}
+.mr-b-10 {
+    margin-bottom: 10px;
+}
 }
 .fs-45 {
     font-size: 45px;
@@ -1473,6 +1491,9 @@ blockquote {
 }
 .f-w-b {
     font-weight: bold !important;
+}
+.p-0 {
+    padding: 0px;
 }
 
 
