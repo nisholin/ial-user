@@ -30,11 +30,12 @@ export class DashboardComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
   ) {
-    
+   
    }
 
   ngOnInit(): void {
-    this.todaysDataTime = formatDate(this.today, 'hh:mm a', 'en-US', '+0530');
+    //this.todaysDataTime = formatDate(this.today, 'hh:mm a', 'en-US', '+0530');
+    this.todaysDataTime = new Date().toLocaleTimeString();
   }
   readQrCode(qrcode){
     //alert("QRcode--->"+qrcode);
